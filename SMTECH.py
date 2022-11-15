@@ -1,11 +1,10 @@
 import requests
-import urllib
 from bs4 import BeautifulSoup
 
-SMTECH_URL = "https://www.smtech.go.kr/front/ifg/no/notice02_list.do"
+SMTECH_URL : str = "https://www.smtech.go.kr/front/ifg/no/notice02_list.do"
 
-def getPage(url):
-    result = []
+def getSMTECHPage(url : str):
+    result  = []
     req = requests.get(url)
     text = req.text
     soup = BeautifulSoup(text,"html.parser")
@@ -17,7 +16,7 @@ def getPage(url):
         textArray=[]
         for td in tds:
             textArray.append(td.text.strip())
-        result.append({"number" : textArray[0], "project": textArray[1], "subject": textArray[2], "duration" : textArray[3],"notice": textArray[4], "link": link })
+        result.append({"number" : textArray[0], "project": textArray[1], "subject": textArray[2], "duration" : textArray[3],"notice": textArray[4], "link": f"https://www.smtech.go.kr{link}" })
     return print(result)
 
-getPage(SMTECH_URL)
+getSMTECHPage(SMTECH_URL)
