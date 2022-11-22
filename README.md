@@ -8,6 +8,6 @@
 </ol>
 <hr />
 
-<b>더 많은 기능 의뢰 및 함께만들기</b>
-[카카오 오픈프로필](https://open.kakao.com/me/funco)
-[링크드인](https://www.linkedin.com/in/funco247)
+<b>더 많은 기능 의뢰 및 함께만들기</b><br />
+1. [카카오 오픈프로필](https://open.kakao.com/me/funco)
+2. [링크드인](https://www.linkedin.com/in/funco247)
