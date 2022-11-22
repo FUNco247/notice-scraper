@@ -9,7 +9,7 @@ driver = webdriver.Chrome(ChromeDriverManager().install())
 
 def getSBAPage(url : str):
     driver.get(url)
-    time.sleep(1.5)
+    time.sleep(1)
     html = driver.page_source
     soup = BeautifulSoup(html,"html.parser")
     table = soup.find("div",{"id":"card_list"})
