@@ -2,9 +2,12 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 import time
 from webdriver_manager.chrome import ChromeDriverManager
+from functions.save import saveToCsv
 
 KSTARTUP_URL : str = "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do"
-driver = webdriver.Chrome(ChromeDriverManager().install())
+options = webdriver.ChromeOptions()
+options.add_experimental_option("excludeSwitches", ["enable-logging"])
+driver = webdriver.Chrome(ChromeDriverManager().install(),options=options)
 
 def getKSTARTUPPage(url : str):
     result  = []
@@ -22,6 +25,8 @@ def getKSTARTUPPage(url : str):
         duration = f"{dateStart}~{dateEnd}"
         info = {"title":title, "date":duration}
         result.append(info)
-    print(result)
+    return result
 
-getKSTARTUPPage(KSTARTUP_URL)
+def get_KSARTUP_csv():
+    infos = getKSTARTUPPage(KSTARTUP_URL)
+    saveToCsv("K-Startup", infos)
